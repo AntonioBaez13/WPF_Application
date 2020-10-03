@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LOTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Jugada">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Repetido" Type="int" Nullable="false" />
+          <Property Name="LoteriaId" Type="int" />
+        </EntityType>
+        <EntityType Name="Loteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PIN" Type="int" Nullable="false" />
+          <Property Name="Anulado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket_Jugada">
+          <Key>
+            <PropertyRef Name="TicketID" />
+            <PropertyRef Name="JugadaID" />
+          </Key>
+          <Property Name="TicketID" Type="int" Nullable="false" />
+          <Property Name="JugadaID" Type="int" Nullable="false" />
+          <Property Name="Puntos" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Jugada_Loteria">
+          <End Role="Loteria" Type="Self.Loteria" Multiplicity="0..1" />
+          <End Role="Jugada" Type="Self.Jugada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loteria">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Jugada">
+              <PropertyRef Name="LoteriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Jugada_Jugada">
+          <End Role="Jugada" Type="Self.Jugada" Multiplicity="1" />
+          <End Role="Ticket_Jugada" Type="Self.Ticket_Jugada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jugada">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket_Jugada">
+              <PropertyRef Name="JugadaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Jugada_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="Ticket_Jugada" Type="Self.Ticket_Jugada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket_Jugada">
+              <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LOTOModelStoreContainer">
+          <EntitySet Name="Jugada" EntityType="Self.Jugada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loteria" EntityType="Self.Loteria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket_Jugada" EntityType="Self.Ticket_Jugada" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Jugada_Loteria" Association="Self.FK_Jugada_Loteria">
+            <End Role="Loteria" EntitySet="Loteria" />
+            <End Role="Jugada" EntitySet="Jugada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Jugada_Jugada" Association="Self.FK_Ticket_Jugada_Jugada">
+            <End Role="Jugada" EntitySet="Jugada" />
+            <End Role="Ticket_Jugada" EntitySet="Ticket_Jugada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Jugada_Ticket" Association="Self.FK_Ticket_Jugada_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Ticket_Jugada" EntitySet="Ticket_Jugada" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LOTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Jugada">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Repetido" Type="Int32" Nullable="false" />
+          <Property Name="LoteriaId" Type="Int32" />
+          <NavigationProperty Name="Loteria" Relationship="Self.FK_Jugada_Loteria" FromRole="Jugada" ToRole="Loteria" />
+          <NavigationProperty Name="Ticket_Jugada" Relationship="Self.FK_Ticket_Jugada_Jugada" FromRole="Jugada" ToRole="Ticket_Jugada" />
+        </EntityType>
+        <EntityType Name="Loteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Jugadas" Relationship="Self.FK_Jugada_Loteria" FromRole="Loteria" ToRole="Jugada" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PIN" Type="Int32" Nullable="false" />
+          <Property Name="Anulado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ticket_Jugada" Relationship="Self.FK_Ticket_Jugada_Ticket" FromRole="Ticket" ToRole="Ticket_Jugada" />
+        </EntityType>
+        <EntityType Name="Ticket_Jugada">
+          <Key>
+            <PropertyRef Name="TicketID" />
+            <PropertyRef Name="JugadaID" />
+          </Key>
+          <Property Name="TicketID" Type="Int32" Nullable="false" />
+          <Property Name="JugadaID" Type="Int32" Nullable="false" />
+          <Property Name="Puntos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Jugada" Relationship="Self.FK_Ticket_Jugada_Jugada" FromRole="Ticket_Jugada" ToRole="Jugada" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Jugada_Ticket" FromRole="Ticket_Jugada" ToRole="Ticket" />
+        </EntityType>
+        <Association Name="FK_Jugada_Loteria">
+          <End Role="Loteria" Type="Self.Loteria" Multiplicity="0..1" />
+          <End Role="Jugada" Type="Self.Jugada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loteria">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Jugada">
+              <PropertyRef Name="LoteriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Jugada_Jugada">
+          <End Role="Jugada" Type="Self.Jugada" Multiplicity="1" />
+          <End Role="Ticket_Jugada" Type="Self.Ticket_Jugada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jugada">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket_Jugada">
+              <PropertyRef Name="JugadaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Jugada_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="Ticket_Jugada" Type="Self.Ticket_Jugada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket_Jugada">
+              <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LOTOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Jugadas" EntityType="Self.Jugada" />
+          <EntitySet Name="Loterias" EntityType="Self.Loteria" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <EntitySet Name="Ticket_Jugada" EntityType="Self.Ticket_Jugada" />
+          <AssociationSet Name="FK_Jugada_Loteria" Association="Self.FK_Jugada_Loteria">
+            <End Role="Loteria" EntitySet="Loterias" />
+            <End Role="Jugada" EntitySet="Jugadas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Jugada_Jugada" Association="Self.FK_Ticket_Jugada_Jugada">
+            <End Role="Jugada" EntitySet="Jugadas" />
+            <End Role="Ticket_Jugada" EntitySet="Ticket_Jugada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Jugada_Ticket" Association="Self.FK_Ticket_Jugada_Ticket">
+            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="Ticket_Jugada" EntitySet="Ticket_Jugada" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LOTOModelStoreContainer" CdmEntityContainer="LOTOEntities">
+          <EntitySetMapping Name="Jugadas">
+            <EntityTypeMapping TypeName="LOTOModel.Jugada">
+              <MappingFragment StoreEntitySet="Jugada">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Repetido" ColumnName="Repetido" />
+                <ScalarProperty Name="LoteriaId" ColumnName="LoteriaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loterias">
+            <EntityTypeMapping TypeName="LOTOModel.Loteria">
+              <MappingFragment StoreEntitySet="Loteria">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="LOTOModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket_Jugada">
+            <EntityTypeMapping TypeName="LOTOModel.Ticket_Jugada">
+              <MappingFragment StoreEntitySet="Ticket_Jugada">
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+                <ScalarProperty Name="JugadaID" ColumnName="JugadaID" />
+                <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

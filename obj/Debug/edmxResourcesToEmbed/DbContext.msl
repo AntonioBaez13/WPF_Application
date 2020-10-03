@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LOTOModelStoreContainer" CdmEntityContainer="LOTOEntities">
+    <EntitySetMapping Name="Jugadas">
+      <EntityTypeMapping TypeName="LOTOModel.Jugada">
+        <MappingFragment StoreEntitySet="Jugada">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Repetido" ColumnName="Repetido" />
+          <ScalarProperty Name="LoteriaId" ColumnName="LoteriaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loterias">
+      <EntityTypeMapping TypeName="LOTOModel.Loteria">
+        <MappingFragment StoreEntitySet="Loteria">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="LOTOModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_Jugada">
+      <EntityTypeMapping TypeName="LOTOModel.Ticket_Jugada">
+        <MappingFragment StoreEntitySet="Ticket_Jugada">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="JugadaID" ColumnName="JugadaID" />
+          <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
