@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HelloWPFApp
+namespace HelloWPFApp.Db
 {
     using System;
     using System.Data.Entity;

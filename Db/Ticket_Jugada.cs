@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HelloWPFApp
+namespace HelloWPFApp.Db
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace HelloWPFApp
     public partial class Ticket_Jugada
     {
         public int TicketID { get; set; }
-        public int JugadaID { get; set; }
+        public System.Guid JugadaID { get; set; }
         public int Puntos { get; set; }
     
         public virtual Jugada Jugada { get; set; }

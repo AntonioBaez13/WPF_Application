@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Numero" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Repetido" Type="int" Nullable="false" />
           <Property Name="LoteriaId" Type="int" />
@@ -25,7 +25,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PIN" Type="int" Nullable="false" />
           <Property Name="Anulado" Type="bit" Nullable="false" />
         </EntityType>
@@ -35,7 +35,7 @@
             <PropertyRef Name="JugadaID" />
           </Key>
           <Property Name="TicketID" Type="int" Nullable="false" />
-          <Property Name="JugadaID" Type="int" Nullable="false" />
+          <Property Name="JugadaID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Puntos" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Jugada_Loteria">
@@ -101,7 +101,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Numero" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Repetido" Type="Int32" Nullable="false" />
           <Property Name="LoteriaId" Type="Int32" />
@@ -120,7 +120,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PIN" Type="Int32" Nullable="false" />
           <Property Name="Anulado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Ticket_Jugada" Relationship="Self.FK_Ticket_Jugada_Ticket" FromRole="Ticket" ToRole="Ticket_Jugada" />
@@ -131,7 +131,7 @@
             <PropertyRef Name="JugadaID" />
           </Key>
           <Property Name="TicketID" Type="Int32" Nullable="false" />
-          <Property Name="JugadaID" Type="Int32" Nullable="false" />
+          <Property Name="JugadaID" Type="Guid" Nullable="false" />
           <Property Name="Puntos" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Jugada" Relationship="Self.FK_Ticket_Jugada_Jugada" FromRole="Ticket_Jugada" ToRole="Jugada" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Jugada_Ticket" FromRole="Ticket_Jugada" ToRole="Ticket" />

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="01a327dcd9154d89a1ec39b8eb87fb3c" Name="Diagram1">
+      <Diagram DiagramId="36fd3dc2fc804f9a8315fa0a73d65cbd" Name="Diagram1">
         <EntityTypeShape EntityType="LOTOModel.Jugada" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LOTOModel.Loteria" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LOTOModel.Ticket" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />

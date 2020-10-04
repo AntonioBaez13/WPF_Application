@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelloWPFApp.Db;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,15 +61,16 @@ namespace HelloWPFApp
                 {
                     Numero = entry.Key,
                     LoteriaId = loteria,
-                    Repetido = 0 // this will contain an algorithm jugada_calculation(entry.) if same numero and same loteria are added again --> (increase repetido value)
+                    Repetido = 0, // this will contain an algorithm jugada_calculation(entry.) if same numero and same loteria are added again --> (increase repetido value)
+                    ID = Guid.NewGuid()
                 };
                 Db.Jugadas.Add(jugada);
                 Db.SaveChanges();
 
                 Ticket_Jugada ticketJugada = new Ticket_Jugada
                 {
-                    //TicketID = ticket.ID,
-                    //JugadaID = jugada.ID,
+                    TicketID = ticket.ID,
+                    JugadaID = jugada.ID,
                     Puntos = entry.Value
                 };
 

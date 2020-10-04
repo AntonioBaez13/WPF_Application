@@ -7,23 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HelloWPFApp
+namespace HelloWPFApp.Db
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Loteria
+    public partial class Ticket
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Loteria()
+        public Ticket()
         {
-            this.Jugadas = new HashSet<Jugada>();
+            this.Ticket_Jugada = new HashSet<Ticket_Jugada>();
         }
     
         public int ID { get; set; }
-        public string Nombre { get; set; }
+        public int PIN { get; set; }
+        public bool Anulado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Jugada> Jugadas { get; set; }
+        public virtual ICollection<Ticket_Jugada> Ticket_Jugada { get; set; }
     }
 }
