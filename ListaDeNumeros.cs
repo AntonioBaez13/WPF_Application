@@ -42,9 +42,6 @@ namespace HelloWPFApp
 
         public void AddToDatabase(int loteria)
         {
-            //TODO:
-            //Fix the fact that the increment id is not working (primary key duplicates error)
-            //POSSIBLE ERROR: won't be able to add the same ticketId in the ticket_Jugada table because the PK will be repeated
             int pin = generator.Next(1000000, 10000000);
 
             Ticket ticket = new Ticket
@@ -52,6 +49,7 @@ namespace HelloWPFApp
                 PIN = pin,
                 Anulado = false
             };
+
             Db.Tickets.Add(ticket);
             Db.SaveChanges();
 
@@ -73,16 +71,11 @@ namespace HelloWPFApp
                     JugadaID = jugada.ID,
                     Puntos = entry.Value
                 };
-
-
                 Db.Ticket_Jugada.Add(ticketJugada);
                 Db.SaveChanges();
-
-
             }
 
-           
-            
+            previewDictionary.Clear();
         }
     }
 }

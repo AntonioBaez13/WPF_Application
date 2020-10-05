@@ -30,12 +30,12 @@ namespace HelloWPFApp
         public MainWindow()
         {
             InitializeComponent();
-            bindCombo();
+            BindCombo();
         }
 
         public List<Loteria> Loteria { get; set; }
 
-        private void bindCombo()
+        private void BindCombo()
         {
             var loteriaItem = Db.Loterias.ToList();
             Loteria = loteriaItem;
@@ -101,11 +101,14 @@ namespace HelloWPFApp
 
             int puntos = cleanTextBoxes.CleanPuntosInput(PuntosInput.Text);
             string jugada = cleanTextBoxes.CleanJugadaInput(JugadaInput.Text);
+            
             //add puntos and jugada to a dictionary <string, int>
             listaDeNumeros.AddKeyValuePairs(jugada, puntos);
+            
             //add the key (jugada) to jugada table and value (puntos) to ticket_jugada table 
             X = this.listaDeNumeros.previewDictionary;
             UpdateItems();
+            
             //empty the textboxes
             ProximaJugada();
         }
@@ -132,14 +135,13 @@ namespace HelloWPFApp
         private void BotonImprimir_Click(object sender, RoutedEventArgs e)
         {
             //get the loteria id from the combobox
-            string selection = ListaSeleccionable.Text;//real
-            //var loteriaId = Db.Loterias.SqlQuery($"Select id from Loteria where Nombre = '{selection}'");
+            int selection = ListaSeleccionable.SelectedIndex + 1;
              
             //Add all the things on the dictionary to a database table
-            listaDeNumeros.AddToDatabase(4);
-            
-            //empty the dictionary 
+            listaDeNumeros.AddToDatabase(selection);
 
+            //empty the dictionary 
+            UpdateItems();
 
         }
     }
