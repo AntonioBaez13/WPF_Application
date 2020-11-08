@@ -23,6 +23,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PIN" Type="int" Nullable="false" />
     <Property Name="Anulado" Type="bit" Nullable="false" />
+    <Property Name="Creado" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="Ticket_Jugada">
     <Key>

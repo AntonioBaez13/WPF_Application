@@ -28,6 +28,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PIN" Type="int" Nullable="false" />
           <Property Name="Anulado" Type="bit" Nullable="false" />
+          <Property Name="Creado" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Ticket_Jugada">
           <Key>
@@ -123,6 +124,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PIN" Type="Int32" Nullable="false" />
           <Property Name="Anulado" Type="Boolean" Nullable="false" />
+          <Property Name="Creado" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Ticket_Jugada" Relationship="Self.FK_Ticket_Jugada_Ticket" FromRole="Ticket" ToRole="Ticket_Jugada" />
         </EntityType>
         <EntityType Name="Ticket_Jugada">
@@ -220,6 +222,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PIN" ColumnName="PIN" />
                 <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+                <ScalarProperty Name="Creado" ColumnName="Creado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -26,6 +26,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PIN" Type="Int32" Nullable="false" />
     <Property Name="Anulado" Type="Boolean" Nullable="false" />
+    <Property Name="Creado" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Ticket_Jugada" Relationship="Self.FK_Ticket_Jugada_Ticket" FromRole="Ticket" ToRole="Ticket_Jugada" />
   </EntityType>
   <EntityType Name="Ticket_Jugada">

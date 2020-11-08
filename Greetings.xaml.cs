@@ -24,7 +24,9 @@ namespace HelloWPFApp
     {
         CleanTextBoxes cleanTextBoxes = new CleanTextBoxes();
         ListaDeNumeros listaDeNumeros = new ListaDeNumeros();
+        JugadasDiarias jugadasDiarias = new JugadasDiarias();
         public IDictionary<string, int> X { get; set; }
+        public List<int> Y { get; set; }
         LOTOEntities Db = new LOTOEntities();
 
         public MainWindow()
@@ -86,14 +88,14 @@ namespace HelloWPFApp
         {
             var keys = string.Join(",", VistaPrevia.SelectedItems.OfType<KeyValuePair<string, int>>().Select(x => x.Key.ToString()));
             X.Remove(keys);
-            UpdateItems();
+            UpdateItemsOnListaPreviaDeNumeros();
 
         }
 
         private void Borrar_Jugada(object sender, RoutedEventArgs e)
         {
             X.Clear();
-            UpdateItems();
+            UpdateItemsOnListaPreviaDeNumeros();
         }
 
         public void AddValuesToDictionary()
@@ -101,13 +103,18 @@ namespace HelloWPFApp
 
             int puntos = cleanTextBoxes.CleanPuntosInput(PuntosInput.Text);
             string jugada = cleanTextBoxes.CleanJugadaInput(JugadaInput.Text);
-            
+
+            if (puntos > 5)
+            {
+                puntos = 5;
+            }
+
             //add puntos and jugada to a dictionary <string, int>
             listaDeNumeros.AddKeyValuePairs(jugada, puntos);
             
             //add the key (jugada) to jugada table and value (puntos) to ticket_jugada table 
             X = this.listaDeNumeros.previewDictionary;
-            UpdateItems();
+            UpdateItemsOnListaPreviaDeNumeros();
             
             //empty the textboxes
             ProximaJugada();
@@ -121,7 +128,7 @@ namespace HelloWPFApp
         }
 
 
-        public void UpdateItems()
+        public void UpdateItemsOnListaPreviaDeNumeros()
         {
             VistaPrevia.ItemsSource = X;
             VistaPrevia.Items.Refresh();
@@ -132,6 +139,11 @@ namespace HelloWPFApp
             totalSum.Text = price;
         }
 
+        public void UpdateTicketsDeHoy()
+        {
+            TicketsDeHoy.ItemsSource = Y;
+            TicketsDeHoy.Items.Refresh();
+        }
         private void BotonImprimir_Click(object sender, RoutedEventArgs e)
         {
             //get the loteria id from the combobox
@@ -141,8 +153,15 @@ namespace HelloWPFApp
             listaDeNumeros.AddToDatabase(selection);
 
             //empty the dictionary 
-            UpdateItems();
+            UpdateItemsOnListaPreviaDeNumeros();
+            //Add the new ticket id to the list 
+            Y = jugadasDiarias.ticketsDeHoy();
+            UpdateTicketsDeHoy();
+        }
 
+        public void ShowMessag(string jugada, int total)
+        {
+            MessageBox.Show($"No hay disponibilidad de la jugada {jugada}, recuerde que el maximo son 5€ y esa jugada ya tiene {total}€ jugados");
         }
     }
 }

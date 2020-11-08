@@ -19,3 +19,9 @@ C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\EntityFramework.xm
 C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp_Content.g.cs
 C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.csproj.CopyComplete
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\Z.EntityFramework.Extensions.dll
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\Z.EntityFramework.Plus.EF6.dll
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\Z.Expressions.Eval.dll
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\Z.EntityFramework.Extensions.xml
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\Z.EntityFramework.Plus.EF6.xml
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\Z.Expressions.Eval.xml

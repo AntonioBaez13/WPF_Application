@@ -25,6 +25,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PIN" ColumnName="PIN" />
           <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+          <ScalarProperty Name="Creado" ColumnName="Creado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
