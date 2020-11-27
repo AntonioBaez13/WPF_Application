@@ -45,11 +45,60 @@
         <TextBox x:Name="totalSum" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="0.00 €" VerticalAlignment="Top" Width="120" Margin="39,29,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="18" Background="Black" Foreground="#FF23EE54"/>
         <ComboBox x:Name="ListaSeleccionable" ItemsSource="{Binding}" SelectedValuePath="Id" DisplayMemberPath="Nombre" HorizontalAlignment="Left" VerticalAlignment="Top" Width="154" Grid.ColumnSpan="2" Margin="298,90.333,0,0" Grid.Row="1" Height="26"/>
         <ListView x:Name="TicketsDeHoy" HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="154" Grid.ColumnSpan="2" Margin="298,69,0,0" Grid.RowSpan="2"  ItemsSource="{Binding Path = Y}">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
+        </ListView>
+
+        <ListView HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="274" Grid.Column="1" Margin="98,69,0,0" Grid.RowSpan="2">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="125" Width="186">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="1" Content="#3030" Height="26" Width="45"/>
+                        <Label Grid.Row ="1" Grid.Column="0" Content="Loteria: "/>
+                        <TextBlock Grid.Row ="1" Grid.Column="1" Text="{Binding Path=Loteria}"/>
+                        <Label Grid.Row ="2" Grid.Column="0" Content="Fecha: "/>
+                        <TextBlock Grid.Row ="2" Grid.Column="1" Text="{Binding Path=CurrentDate}" RenderTransformOrigin="1.633,0.641"/>
+                        <Label Grid.Row ="3" Grid.Column="1" Content="Ticket No: "/>
+                        <TextBlock Grid.Row ="3" Grid.Column="2" Text="{Binding Path=TicketNumber}"/>
+                        <Label Grid.Row ="4" Grid.Column="1" Content="Pin: "/>
+                        <TextBlock Grid.Row ="4" Grid.Column="2" Text="{Binding Path=TicketPin}"/>
+                        <!--<Label Grid.Row ="5" Grid.Column="1" Content="
+                        <TextBlock Grid.Row ="6" Grid.Column="0" Text="3"/>
+                        <TextBlock Grid.Row ="6" Grid.Column="1" Text="27"/>
+                        <TextBlock Grid.Row ="6" Grid.Column="2" Text="$3"/>
+                        <Label Grid.Row ="7" Grid.Column="1" Content
+                        <Label Grid.Row ="8" Grid.Column="1" Content="Buena Suerte -Revise su Jugada-"/>-->
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <DataGrid>
+
+            </DataGrid>
+
         </ListView>
 
     </Grid>

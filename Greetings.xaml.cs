@@ -1,4 +1,5 @@
-﻿using HelloWPFApp.Db;
+﻿
+using HelloWPFApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace HelloWPFApp
         JugadasDiarias jugadasDiarias = new JugadasDiarias();
         public IDictionary<string, int> X { get; set; }
         public List<int> Y { get; set; }
-        LOTOEntities Db = new LOTOEntities();
+        LOTOContext Db = new LOTOContext();
 
         public MainWindow()
         {
@@ -39,7 +40,7 @@ namespace HelloWPFApp
 
         private void BindCombo()
         {
-            var loteriaItem = Db.Loterias.ToList();
+            var loteriaItem = Db.Loteria.ToList();
             Loteria = loteriaItem;
             ListaSeleccionable.DataContext = Loteria;
         }
@@ -155,7 +156,7 @@ namespace HelloWPFApp
             //empty the dictionary 
             UpdateItemsOnListaPreviaDeNumeros();
             //Add the new ticket id to the list 
-            Y = jugadasDiarias.ticketsDeHoy();
+            Y = jugadasDiarias.TicketsDeHoy();
             UpdateTicketsDeHoy();
         }
 

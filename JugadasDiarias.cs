@@ -1,4 +1,4 @@
-﻿using HelloWPFApp.Db;
+﻿using HelloWPFApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +9,12 @@ namespace HelloWPFApp
 {
     public class JugadasDiarias
     {
-        LOTOEntities db = new LOTOEntities();
+        LOTOContext db = new LOTOContext();
 
-        public List<int> ticketsDeHoy()
+        public List<int> TicketsDeHoy()
         {
             var date = DateTime.Today;
-            var items = db.Tickets.OrderByDescending(a => a.Creado).Where(d => (d.Creado >= date) && (d.Creado <= DateTime.Now)).Select(x=> x.ID).ToList();
+            var items = db.Ticket.OrderByDescending(a => a.Creado).Where(d => (d.Creado >= date) && (d.Creado <= DateTime.Now)).Select(x=> x.Id).ToList();
             return items;
         }
     }

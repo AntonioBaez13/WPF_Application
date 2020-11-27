@@ -566,11 +566,21 @@
             <summary>Gets or sets the default number type.</summary>
             <value>The default number type.</value>
         </member>
+        <member name="P:Z.Expressions.EvalContext.DisableAutoRegisterEntityFramework">
+            <summary>
+            Gets or sets a value indicating whether the automatic register entity framework is
+            disabled.
+            </summary>
+            <value>True if disable automatic register entity framework, false if not.</value>
+        </member>
         <member name="M:Z.Expressions.EvalContext.Dispose">
             <summary>
             Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
             resources.
             </summary>
+        </member>
+        <member name="T:Z.Expressions.DefaultNumberType">
+            <summary>Values that represent default number types (Int by default).</summary>
         </member>
         <member name="M:Z.Expressions.EvalLinq.Execute(System.String,System.Boolean,System.Linq.Expressions.Expression,System.Object[])">
             <summary>Executes.</summary>
