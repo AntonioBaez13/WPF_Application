@@ -1,0 +1,8 @@
+ID,Nombre
+1,Noche
+2,Tarde
+3,Manana
+4,Real
+5,Dia
+6,MediaNoche
+
