@@ -60,14 +60,19 @@ namespace HelloWPFApp
 
                     Db.Ticket.Add(ticket);
                     Db.SaveChanges();
-
+                    //TODO: 
+                    //TAKE INTO ACCOUNT THE DATE SO THAT THE DAY AFTER I CAN KEEP SELLING NUMBERS (RESET)
                     foreach (KeyValuePair<string, int> entry in previewDictionary)
                     {
                         Jugada jugada = new Jugada();
-                        //if in the jugada table i already have el numero y la misma loteria 
-                        if ((Db.Jugada.Any(j => j.Numero == entry.Key && j.LoteriaId == loteria)))//If jugada exists
+                        //if in the jugada table i already have el numero y la misma loteria y PARA LA MISMA FECHA
+                        if ((Db.Jugada.Any(j => j.Numero == entry.Key 
+                                            && j.LoteriaId == loteria 
+                                            && j.Fecha == DateTime.UtcNow.Date)))//If jugada exists
                         {
-                            var jugadaQuery = Db.Jugada.Where(j => j.LoteriaId == loteria && j.Numero == entry.Key).FirstOrDefault();
+                            var jugadaQuery = Db.Jugada.Where(j => j.LoteriaId == loteria 
+                                                                && j.Numero == entry.Key 
+                                                                && j.Fecha == DateTime.UtcNow.Date).FirstOrDefault();
                             int valorRepetido = jugadaQuery.Repetido;
                             if (valorRepetido + entry.Value > 5)
                             {
@@ -76,8 +81,12 @@ namespace HelloWPFApp
                             }
                             //solo haz un update de la columna de repetido
                             var valor = entry.Value;
-                            Db.Jugada.Where(j => j.LoteriaId == loteria && j.Numero == entry.Key).Update(j => new Jugada { Repetido = j.Repetido + valor });
-                            var query = Db.Jugada.Where(j => j.LoteriaId == loteria && j.Numero == entry.Key).FirstOrDefault();
+                            Db.Jugada.Where(j => j.LoteriaId == loteria 
+                                            && j.Numero == entry.Key 
+                                            && j.Fecha == DateTime.UtcNow.Date).Update(j => new Jugada { Repetido = j.Repetido + valor });
+                            var query = Db.Jugada.Where(j => j.LoteriaId == loteria 
+                                                        && j.Numero == entry.Key 
+                                                        && j.Fecha == DateTime.UtcNow.Date).FirstOrDefault();
                             jugada.Id = query.Id;
                         }
                         else //If jugada doesn't exist
@@ -85,6 +94,7 @@ namespace HelloWPFApp
                             jugada.Numero = entry.Key;
                             jugada.LoteriaId = loteria;
                             jugada.Repetido = entry.Value;
+                            jugada.Fecha = DateTime.UtcNow.Date;
                             jugada.Id = Guid.NewGuid();
                             Db.Jugada.Add(jugada);
                         }

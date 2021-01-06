@@ -37,6 +37,8 @@ namespace HelloWPFApp.Models
                     .HasColumnName("ID")
                     .ValueGeneratedNever();
 
+                entity.Property(e => e.Fecha).HasColumnType("date");
+
                 entity.Property(e => e.Numero)
                     .IsRequired()
                     .HasMaxLength(10)

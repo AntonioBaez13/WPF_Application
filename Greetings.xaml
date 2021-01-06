@@ -57,7 +57,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="274" Grid.Column="1" Margin="98,69,0,0" Grid.RowSpan="2">
+        <ListView HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="274" Grid.Column="1" Margin="98,69,0,0" Grid.RowSpan="2" Background="#FF8EF8FF">
             <ListView.Resources>
                 <Style TargetType="GridViewColumnHeader">
                     <Setter Property="Visibility" Value="Collapsed"/>

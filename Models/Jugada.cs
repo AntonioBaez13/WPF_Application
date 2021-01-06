@@ -14,6 +14,7 @@ namespace HelloWPFApp.Models
         public string Numero { get; set; }
         public int Repetido { get; set; }
         public int? LoteriaId { get; set; }
+        public DateTime? Fecha { get; set; }
 
         public virtual Loteria Loteria { get; set; }
         public virtual ICollection<TicketJugada> TicketJugada { get; set; }
