@@ -233,6 +233,7 @@
     <Compile Include="Models\LOTOContext.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketJugada.cs" />
+    <Compile Include="PrintReceipt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

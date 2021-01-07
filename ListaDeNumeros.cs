@@ -109,6 +109,8 @@ namespace HelloWPFApp
                         Db.TicketJugada.Add(ticketJugada);
                     }
                     Db.SaveChanges();
+                    PrintReceipt print = new PrintReceipt(previewDictionary, pin, ticket.Id, loteria);
+                    print.PrintTicket();
                     dbTran.Commit();
                     previewDictionary.Clear();
                    

@@ -16,7 +16,7 @@
             <ColumnDefinition Width="409*"/>
         </Grid.ColumnDefinitions>
         <TextBox Name="PuntosInput" PreviewTextInput="Input_NoLetters" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="39,69,0,0" MaxLength="1" KeyDown="PuntosInput_KeyDown"/>
-        <TextBox Name="JugadaInput" PreviewTextInput="Input_NoLetters" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="39,114,0,0" MaxLength="4" KeyDown="JugadaInput_KeyDown"/>
+        <TextBox Name="JugadaInput" PreviewTextInput="Input_NoLetters" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="39,114,0,0" MaxLength="2" KeyDown="JugadaInput_KeyDown"/>
         <Button x:Name="BotonImprimir" Content="Imprimir" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="39,90.333,0,0" Grid.Row="1" Height="26" RenderTransformOrigin="0.5,-1.885" Click="BotonImprimir_Click"/>
         <Label Content="Num, Pale, Trip" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,114,0,0"/>
         <Label Content="Puntos" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.287,1.933" Margin="179,69,0,0"/>
