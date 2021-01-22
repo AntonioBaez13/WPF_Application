@@ -7,99 +7,89 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800" Background="#FFE4E4E4">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="258*"/>
-            <RowDefinition Height="163*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="384*"/>
-            <ColumnDefinition Width="409*"/>
-        </Grid.ColumnDefinitions>
-        <TextBox Name="PuntosInput" PreviewTextInput="Input_NoLetters" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="39,69,0,0" MaxLength="1" KeyDown="PuntosInput_KeyDown"/>
-        <TextBox Name="JugadaInput" PreviewTextInput="Input_NoLetters" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="39,114,0,0" MaxLength="2" KeyDown="JugadaInput_KeyDown"/>
-        <Button x:Name="BotonImprimir" Content="Imprimir" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="39,90.333,0,0" Grid.Row="1" Height="26" RenderTransformOrigin="0.5,-1.885" Click="BotonImprimir_Click"/>
-        <Label Content="Num, Pale, Trip" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,114,0,0"/>
-        <Label Content="Puntos" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.287,1.933" Margin="179,69,0,0"/>
-        <ListView x:Name="VistaPrevia" HorizontalAlignment="Left" Height="193" Margin="39,165,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="210" ItemsSource="{Binding Path = X}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <ListView.Resources>
-                <Style TargetType="GridViewColumnHeader">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                </Style>
-            </ListView.Resources>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="25" DisplayMemberBinding="{Binding Value}"/>
-                    <GridViewColumn>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label Content="--a el--"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn  Width="50" DisplayMemberBinding="{Binding Key}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="159" Margin="90,128.333,0,0" Grid.Row="1" Height="30" Click="Borrar_Jugada"/>
-        <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Margin="39,128.333,0,0" Grid.Row="1" Height="30" Click="Eliminar_Numero"/>
-        <TextBox x:Name="totalSum" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="0.00 €" VerticalAlignment="Top" Width="120" Margin="39,29,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="18" Background="Black" Foreground="#FF23EE54"/>
-        <ComboBox x:Name="ListaSeleccionable" ItemsSource="{Binding}" SelectedValuePath="Id" DisplayMemberPath="Nombre" HorizontalAlignment="Left" VerticalAlignment="Top" Width="154" Grid.ColumnSpan="2" Margin="298,90.333,0,0" Grid.Row="1" Height="26"/>
-        <ListView x:Name="TicketsDeHoy" HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="154" Grid.ColumnSpan="2" Margin="298,69,0,0" Grid.RowSpan="2"  ItemsSource="{Binding Path = Y}">
-            <ListView.Resources>
-                <Style TargetType="GridViewColumnHeader">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                </Style>
-            </ListView.Resources>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-
-        <ListView HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="274" Grid.Column="1" Margin="98,69,0,0" Grid.RowSpan="2" Background="#FF8EF8FF">
-            <ListView.Resources>
-                <Style TargetType="GridViewColumnHeader">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                </Style>
-            </ListView.Resources>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Height="125" Width="186">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="1" Content="#3030" Height="26" Width="45"/>
-                        <Label Grid.Row ="1" Grid.Column="0" Content="Loteria: "/>
-                        <TextBlock Grid.Row ="1" Grid.Column="1" Text="{Binding Path=Loteria}"/>
-                        <Label Grid.Row ="2" Grid.Column="0" Content="Fecha: "/>
-                        <TextBlock Grid.Row ="2" Grid.Column="1" Text="{Binding Path=CurrentDate}" RenderTransformOrigin="1.633,0.641"/>
-                        <Label Grid.Row ="3" Grid.Column="1" Content="Ticket No: "/>
-                        <TextBlock Grid.Row ="3" Grid.Column="2" Text="{Binding Path=TicketNumber}"/>
-                        <Label Grid.Row ="4" Grid.Column="1" Content="Pin: "/>
-                        <TextBlock Grid.Row ="4" Grid.Column="2" Text="{Binding Path=TicketPin}"/>
-                        <!--<Label Grid.Row ="5" Grid.Column="1" Content="
-                        <TextBlock Grid.Row ="6" Grid.Column="0" Text="3"/>
-                        <TextBlock Grid.Row ="6" Grid.Column="1" Text="27"/>
-                        <TextBlock Grid.Row ="6" Grid.Column="2" Text="$3"/>
-                        <Label Grid.Row ="7" Grid.Column="1" Content
-                        <Label Grid.Row ="8" Grid.Column="1" Content="Buena Suerte -Revise su Jugada-"/>-->
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <DataGrid>
-
-            </DataGrid>
-
-        </ListView>
-
+        <TabControl HorizontalAlignment="Left" Height="471" VerticalAlignment="Top" Width="793" Margin="0,0,0,-0.333" Background="{x:Null}">
+            <TabItem Header="Venta">
+                <Grid Margin="0,0,1.333,-0.333" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-359.914"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="258*"/>
+                        <RowDefinition Height="163*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="76*"/>
+                        <ColumnDefinition Width="304*"/>
+                        <ColumnDefinition Width="405*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="PuntosInput" PreviewTextInput="Input_NoLetters" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="39,69,0,0" MaxLength="1" KeyDown="PuntosInput_KeyDown" Grid.ColumnSpan="2"/>
+                    <TextBox Name="JugadaInput" PreviewTextInput="Input_NoLetters" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="39,114,0,0" MaxLength="2" KeyDown="JugadaInput_KeyDown" Grid.ColumnSpan="2"/>
+                    <Button x:Name="BotonImprimir" Content="Imprimir" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="39,90.667,0,0" Grid.Row="1" Height="26" RenderTransformOrigin="0.5,-1.885" Click="BotonImprimir_Click" Grid.ColumnSpan="2"/>
+                    <Label Content="Num, Pale, Trip" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="102.682,114,0,0" Grid.Column="1"/>
+                    <Label Content="Puntos" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.287,1.933" Margin="102.682,69,0,0" Grid.Column="1"/>
+                    <ListView x:Name="VistaPrevia" HorizontalAlignment="Left" Height="193" Margin="39,165,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="210" ItemsSource="{Binding Path = X}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2">
+                        <ListView.Resources>
+                            <Style TargetType="GridViewColumnHeader">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Style>
+                        </ListView.Resources>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="25" DisplayMemberBinding="{Binding Value}"/>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="--a el--"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn  Width="50" DisplayMemberBinding="{Binding Key}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="159" Margin="13.682,128.667,0,0" Grid.Row="1" Height="30" Click="Borrar_Jugada" Grid.Column="1"/>
+                    <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Margin="39,128.667,0,0" Grid.Row="1" Height="30" Click="Eliminar_Numero" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="totalSum" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="0.00 €" VerticalAlignment="Top" Width="120" Margin="39,29,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="18" Background="Black" Foreground="#FF23EE54" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="ListaSeleccionable" SelectedIndex="0" ItemsSource="{Binding}" SelectedValuePath="Id" DisplayMemberPath="Nombre" HorizontalAlignment="Left" VerticalAlignment="Top" Width="154" Grid.ColumnSpan="2" Margin="221.682,90.667,0,0" Grid.Row="1" Height="26" Grid.Column="1"/>
+                    <ListView x:Name="TicketsDeHoy" HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="154" Grid.ColumnSpan="2" Margin="221.682,69,0,0" Grid.RowSpan="2"  ItemsSource="{Binding Path = Y}" Grid.Column="1">
+                        <ListView.Resources>
+                            <Style TargetType="GridViewColumnHeader">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Style>
+                        </ListView.Resources>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel x:Name="TicketPreviewPanel" Grid.Column="2" HorizontalAlignment="Left" Height="336" Margin="135.334,69,0,0" VerticalAlignment="Top" Width="253" Grid.RowSpan="2" Background="#FF0CDBD5">
+                        <Label Content="3030" FontWeight="Bold" FontSize="18"/>
+                        <Label Content="Ticket No:"/>
+                        <Label Content="Loteria: "/>
+                        <ListView Height="188" Background="White" Margin="0,0,0.333,0">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Label Content="Total: "/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Reportes">
+                <Grid>
+                    <Button x:Name="Ventas" Content="Reporte De Ventas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Margin="18,87,0,0" Height="31" Click="Ventas_Click"/>
+                    <DatePicker x:Name="Fecha" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,29,0,0" Height="27" Width="153"/>
+                    <TextBox x:Name="Reporte" HorizontalAlignment="Center" Height="42" TextWrapping="Wrap" Text="No hay fecha seleccionada" VerticalAlignment="Top" Width="283" Margin="234,54,270.333,0"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

@@ -145,6 +145,7 @@ namespace HelloWPFApp
             TicketsDeHoy.ItemsSource = Y;
             TicketsDeHoy.Items.Refresh();
         }
+
         private void BotonImprimir_Click(object sender, RoutedEventArgs e)
         {
             //get the loteria id from the combobox
@@ -163,6 +164,19 @@ namespace HelloWPFApp
         public void ShowMessag(string jugada, int total)
         {
             MessageBox.Show($"No hay disponibilidad de la jugada {jugada}, recuerde que el maximo son 5€ y esa jugada ya tiene {total}€ jugados");
+        }
+
+        private void Ventas_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime? selectedDate = Fecha.SelectedDate;
+            if (selectedDate.HasValue)
+            {
+                string formatted = selectedDate.Value.ToString("yyyy-MM-dd");
+                var data = Db.Jugada.Where(j => j.Fecha == selectedDate.Value.Date);
+                var sum = data.Sum(J => J.Repetido);
+                string report = $"En la fecha de {formatted} se vendio un total de {sum} euros";
+                Reporte.Text = report;
+            }
         }
     }
 }
