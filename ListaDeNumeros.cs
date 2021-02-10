@@ -39,7 +39,6 @@ namespace HelloWPFApp
                 previewDictionary.Add(jugada, puntos);
             }
 
-
         }
 
         public void AddToDatabase(int loteria)

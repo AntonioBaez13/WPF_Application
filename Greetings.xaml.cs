@@ -87,16 +87,22 @@ namespace HelloWPFApp
         //Remove only one item from the  dictionary
         private void Eliminar_Numero(object sender, RoutedEventArgs e)
         {
-            var keys = string.Join(",", VistaPrevia.SelectedItems.OfType<KeyValuePair<string, int>>().Select(x => x.Key.ToString()));
-            X.Remove(keys);
-            UpdateItemsOnListaPreviaDeNumeros();
-
+            if (this.listaDeNumeros.previewDictionary.Count > 0)
+            {
+                var keys = string.Join(",", VistaPrevia.SelectedItems.OfType<KeyValuePair<string, int>>().Select(x => x.Key.ToString()));
+                X.Remove(keys);
+                UpdateItemsOnListaPreviaDeNumeros();
+            }
         }
 
         private void Borrar_Jugada(object sender, RoutedEventArgs e)
         {
-            X.Clear();
-            UpdateItemsOnListaPreviaDeNumeros();
+            if (this.listaDeNumeros.previewDictionary.Count>0)
+            {
+                X.Clear();
+                UpdateItemsOnListaPreviaDeNumeros();
+
+            }
         }
 
         public void AddValuesToDictionary()
@@ -144,21 +150,26 @@ namespace HelloWPFApp
         {
             TicketsDeHoy.ItemsSource = Y;
             TicketsDeHoy.Items.Refresh();
+            TicketsDeHoy.SelectedIndex = TicketsDeHoy.Items.Count - 1;
+            TicketsDeHoy.ScrollIntoView(TicketsDeHoy.SelectedItem);
         }
 
         private void BotonImprimir_Click(object sender, RoutedEventArgs e)
         {
-            //get the loteria id from the combobox
-            int selection = ListaSeleccionable.SelectedIndex + 1;
-             
-            //Add all the things on the dictionary to a database table
-            listaDeNumeros.AddToDatabase(selection);
+            if (this.listaDeNumeros.previewDictionary.Count > 0)
+            {
+                //get the loteria id from the combobox
+                int selection = ListaSeleccionable.SelectedIndex + 1;
 
-            //empty the dictionary 
-            UpdateItemsOnListaPreviaDeNumeros();
-            //Add the new ticket id to the list 
-            Y = jugadasDiarias.TicketsDeHoy();
-            UpdateTicketsDeHoy();
+                //Add all the things on the dictionary to a database table
+                listaDeNumeros.AddToDatabase(selection);
+
+                //empty the dictionary 
+                UpdateItemsOnListaPreviaDeNumeros();
+                //Add the new ticket id to the list 
+                Y = jugadasDiarias.TicketsDeHoy();
+                UpdateTicketsDeHoy();
+            }
         }
 
         public void ShowMessag(string jugada, int total)
@@ -177,6 +188,13 @@ namespace HelloWPFApp
                 string report = $"En la fecha de {formatted} se vendio un total de {sum} euros";
                 Reporte.Text = report;
             }
+        }
+
+        private void Copiar_Ticket_Click(object sender, RoutedEventArgs e)
+        {
+            //create a variable with whatever is on the TicketID text box 
+            var ticketID = TicketID.Text;
+            //Create a new dictionary that will equal store 
         }
     }
 }
