@@ -110,8 +110,11 @@ namespace HelloWPFApp
 
             int puntos = cleanTextBoxes.CleanPuntosInput(PuntosInput.Text);
             string jugada = cleanTextBoxes.CleanJugadaInput(JugadaInput.Text);
-
-            if (puntos > 5)
+ 
+            if(jugada.Length > 2)
+            {
+                puntos = 1;
+            }else if (puntos > 5)
             {
                 puntos = 5;
             }

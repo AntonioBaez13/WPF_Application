@@ -59,8 +59,7 @@ namespace HelloWPFApp
 
                     Db.Ticket.Add(ticket);
                     Db.SaveChanges();
-                    //TODO: 
-                    //TAKE INTO ACCOUNT THE DATE SO THAT THE DAY AFTER I CAN KEEP SELLING NUMBERS (RESET)
+
                     foreach (KeyValuePair<string, int> entry in previewDictionary)
                     {
                         Jugada jugada = new Jugada();
@@ -69,6 +68,11 @@ namespace HelloWPFApp
                                             && j.LoteriaId == loteria 
                                             && j.Fecha == DateTime.UtcNow.Date)))//If jugada exists
                         {
+                            //if the jugada length is 4 (pale) then throw the exception without checking anything
+                            if(entry.Key.Length > 2)
+                            {
+                                throw new Exception();
+                            }
                             var jugadaQuery = Db.Jugada.Where(j => j.LoteriaId == loteria 
                                                                 && j.Numero == entry.Key 
                                                                 && j.Fecha == DateTime.UtcNow.Date).FirstOrDefault();
