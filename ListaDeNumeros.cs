@@ -3,8 +3,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using Z.EntityFramework.Plus;
 
 namespace HelloWPFApp
@@ -44,7 +43,8 @@ namespace HelloWPFApp
         public void AddToDatabase(int loteria)
         {
             int pin = generator.Next(1000000, 10000000);
-            
+            string jugada_combinacion="";
+            int puntos_combinacion=0;
 
             using (IDbContextTransaction dbTran = Db.Database.BeginTransaction())
             {
@@ -68,9 +68,13 @@ namespace HelloWPFApp
                                             && j.LoteriaId == loteria 
                                             && j.Fecha == DateTime.UtcNow.Date)))//If jugada exists
                         {
+                            //jugada combinacion
+                            jugada_combinacion = entry.Key;
+                            
                             //if the jugada length is 4 (pale) then throw the exception without checking anything
                             if(entry.Key.Length > 2)
                             {
+                                puntos_combinacion = 1;
                                 throw new Exception();
                             }
                             var jugadaQuery = Db.Jugada.Where(j => j.LoteriaId == loteria 
@@ -79,6 +83,7 @@ namespace HelloWPFApp
                             int valorRepetido = jugadaQuery.Repetido;
                             if (valorRepetido + entry.Value > 5)
                             {
+                                puntos_combinacion = valorRepetido;
                                 throw new Exception();
                                 //TODO show a message with the wrong values
                             }
@@ -118,8 +123,9 @@ namespace HelloWPFApp
                     previewDictionary.Clear();
                    
                 }
-                catch( Exception e)
+                catch(Exception)
                 {
+                    MessageBox.Show($"No hay disponibilidad de la jugada {jugada_combinacion}, recuerde que el maximo son 5€(numeros)/1€(pales) y esa jugada ya tiene {puntos_combinacion}€ jugados");
                     dbTran.Rollback();
                 }
             }

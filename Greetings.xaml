@@ -88,7 +88,7 @@
             </TabItem>
             <TabItem Header="Reportes">
                 <Grid>
-                    <Button x:Name="Ventas" Content="Reporte De Ventas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Margin="18,87,0,0" Height="31" Click="Ventas_Click"/>
+                    <Button x:Name="ReporteDeVentas" Content="Reporte De Ventas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Margin="18,87,0,0" Height="31" Click="ReporteDeVentas_Click"/>
                     <DatePicker x:Name="Fecha" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,29,0,0" Height="27" Width="153"/>
                     <TextBox x:Name="Reporte" HorizontalAlignment="Center" Height="42" TextWrapping="Wrap" Text="No hay fecha seleccionada" VerticalAlignment="Top" Width="283" Margin="234,54,270.333,0"/>
                 </Grid>

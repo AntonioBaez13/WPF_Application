@@ -54,12 +54,7 @@ namespace HelloWPFApp
 
             printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
 
-            DialogResult result = printDialog.ShowDialog();
-
-            if(result == DialogResult.OK)
-            {
-                printDocument.Print();
-            }
+            printDocument.Print();
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
