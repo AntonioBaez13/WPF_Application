@@ -114,3 +114,7 @@ C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\System.Security.Pe
 C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\Z.EntityFramework.Extensions.EFCore.xml
 C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\Z.EntityFramework.Plus.EFCore.xml
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\HelloWPFApp.exe.manifest
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\bin\Debug\HelloWPFApp.application
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.exe.manifest
+C:\Users\anxo-\source\repos\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.application
